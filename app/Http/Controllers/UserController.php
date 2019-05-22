@@ -322,13 +322,20 @@ class UserController extends Controller
 
         }
 
-        return view('frontend/order_detail', [
-            'city' => City::all(),
-            'data' => $request,
-            'cart' => UserCart::all(),
-            'order'=> Order::find($order->order_id)
-
-        ]);
+//        return view('frontend/order_detail', [
+//            'city' => City::all(),
+//            'data' => $request,
+//            'cart' => UserCart::all(),
+//            'order'=> Order::find($order->order_id)
+//
+//        ]);
+        if(count(Order_item::where('order_id',$order->order->id))==0){
+            $order->delete();
+            return redirect('user/cart');
+        }
+        else {
+            return redirect('user/order/detail/' . $order->order_id);
+        }
 
     }
 

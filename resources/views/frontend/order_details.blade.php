@@ -69,7 +69,7 @@
                                             <th scope="row">{{$order->order_id}}</th>
                                             <th>{{$order->orderUser->name}}</th>
                                             <th>{{$order->address}}</th>
-                                            <th>{{$order->phone_number}}</th>
+                                            <th>+84{{$order->phone_number}}</th>
                                             <th>{{$order->total_price}}</th>
                                             <th>{{$order->shipping_fee}}</th>
                                             <th>{{$order->is_send}}</th>
@@ -123,8 +123,8 @@
                                     </table>
 
                                     Total Bill : {{$order->total_price + $order->shipping_fee}}
-                                    @if($order->is_send)
-                                        <button><a href="{{url('user/order/received/'.$order->order_id)}}" style="text-decoration:none">Received</a></button>
+                                    @if($order->is_send && !$order->is_received)
+                                        <button style="float:right" class="btn btn-primary"><a style="color:white;text-decoration:none;" href="{{url('user/order/received/'.$order->order_id)}}" >Received</a></button>
                                     @endif
 
 

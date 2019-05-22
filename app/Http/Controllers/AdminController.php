@@ -297,8 +297,14 @@ class AdminController extends Controller
         $model->category_name = $request->category_name;
 
         $model->category_parent = $request->category_parent;
-        $temp= Category::find($request->category_parent);
-        $model->level=$temp->level+1;
+
+        if($request->category_parent == 0){
+            $model->level=1;
+        }
+        else{
+            $temp= Category::find($request->category_parent);
+            $model->level=$temp->level+1;
+        }
         $model->save();
         return redirect('admin/category');
     }
@@ -312,8 +318,13 @@ class AdminController extends Controller
         $model = Category::find($request->category_id);
         $model->category_name = $request->category_name;
         $model->category_parent = $request->category_parent;
-        $temp= Category::find($request->category_parent);
-        $model->level=$temp->level+1;
+        if($request->category_parent == 0){
+            $model->level=1;
+        }
+        else{
+            $temp= Category::find($request->category_parent);
+            $model->level=$temp->level+1;
+        }
 
         $model->save();
         return redirect('admin/category');

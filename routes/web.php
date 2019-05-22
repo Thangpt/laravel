@@ -242,6 +242,12 @@ Route::group(['prefix' => '/user', 'middleware' => 'Checklogin'], function () {
     Route::get('/order/detail/{id}',function($id){
        return view('frontend/order_details',['order'=>\App\Order::find($id)]);
     });
+    Route::get('/order/received/{id}',function($id){
+        $model = \App\Order::find($id);
+        $model->is_received= Carbon\Carbon::now()->toDateTimeString();
+        $model->save();
+        return redirect('user/order/detail/'.$model->order_id);
+    });
     Route::get('/cart',function(){
         return view('frontend/cart',['cart'=> \App\UserCart::where('user_id',\Illuminate\Support\Facades\Auth::user()->id)->get()]);
     });

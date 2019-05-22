@@ -106,7 +106,7 @@
                     Total Bill : {{$order->total_price + $order->shipping_fee}}
 
                     @if(!$order->is_send)
-                        <button><a href="{{route('order')}}/prepare/{{$order->order_id}}" style="text-decoration:none">Prepare Order</a></button>
+                        <button class="btn btn-primary" style="float:right"><a style="color:white;text-decoration:none;" href="{{route('order')}}/prepare/{{$order->order_id}}" style="text-decoration:none">Prepare Order</a></button>
                         @endif
 
                 </div>

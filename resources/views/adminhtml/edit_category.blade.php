@@ -42,14 +42,15 @@
                                     <option selected value="0">Không</option>
                                     @foreach($category as $model)
 
-                                        @if($model->level==1)
+                                        @if($model->level==1 && $model->category_id != $item->category_id)
                                             <option value="{{$model->category_id}}">{{$model->category_name}}</option>
                                         @endif
                                     @endforeach
                                 @else
+                                    <option value="0">Không</option>
                                     @foreach($category as $model)
 
-                                        @if($item->category_parent==$model->category_id )
+                                        @if($item->category_parent==$model->category_id && $model->category_id != $item->category_id)
                                             <option selected
                                                     value="{{$model->category_id}}">{{$model->category_name}}</option>
                                         @elseif($model->level==1)
