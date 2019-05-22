@@ -53,6 +53,6 @@
     </div><!--/.row-->
 
     <div>
-        <button  type="button" class="btn btn-success"><a style="color:black;text-decoration:none" href="shipping/add">Add Shipping Fee</a></button>
+        <button  type="button" class="btn btn-primary"><a style="color:black;text-decoration:none" href="shipping/add">Add Shipping Fee</a></button>
     </div>
 @endsection

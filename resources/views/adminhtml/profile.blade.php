@@ -59,9 +59,9 @@
             @endif
 
             <div>
-                <button type="button" class="btn btn-success"><a style="color:black;text-decoration:none"
+                <button type="button" class="btn btn-primary"><a style="color:black;text-decoration:none"
                                                                  href="profile/edit">Edit</a></button>
-                <button type="button" class="btn btn-success"><a style="color:black;text-decoration:none"
+                <button type="button" class="btn btn-primary"><a style="color:black;text-decoration:none"
                                                                  href="profile/password">Change PassWord</a></button>
             </div>
         </div>

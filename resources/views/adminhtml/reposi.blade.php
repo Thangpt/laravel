@@ -46,7 +46,7 @@
                         </tbody>
                     </table>
                     {{$repository->links()}}
-                    <button type="button" class="btn btn-success"><a style="color:black;text-decoration:none"
+                    <button type="button" class="btn btn-primary"><a style="color:black;text-decoration:none"
                                                                      href="repository/add">Add Repository</a></button>
                 </div>
             </div>

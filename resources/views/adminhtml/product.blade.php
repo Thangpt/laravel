@@ -82,6 +82,6 @@
         {{--</thead>--}}
         {{----}}
     {{--</table>--}}
-    <button  type="button" class="btn btn-success"><a style="color:black;text-decoration:none" href="product/add">Add Product</a></button>
+    <button  type="button" class="btn btn-primary"><a style="color:black;text-decoration:none" href="product/add">Add Product</a></button>
 </div>
 @endsection
