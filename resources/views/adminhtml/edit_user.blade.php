@@ -57,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <p> Level</p>
-                            <select name="level">
+                            <select name="level" class="form-control">
                                 <option>Choose..</option>
                                 @if($user->level==0)
                                     <option selected value="0">User</option>

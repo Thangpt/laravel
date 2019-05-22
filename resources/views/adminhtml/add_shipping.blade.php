@@ -36,7 +36,7 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <p>Ship From</p>
-                            <select name="ship_from">
+                            <select name="ship_from" class="form-control">
                                 <option selected> Choose Repository</option>
                                 @foreach($repository as $item)
                                     <option value="{{$item->repository_id}}">{{$item->repository_name}}</option>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <p>Ship to</p>
-                            <select name="ship_to">
+                            <select name="ship_to" class="form-control">
                                 <option selected> Choose City</option>
                                 @foreach($city as $item)
                                     <option value="{{$item->city_id}}">{{$item->city_name}}</option>
@@ -56,11 +56,11 @@
                         </div>
                         <div class="form-group">
                             <p>Shipping Fee</p>
-                            <input type="text" name="fee" />
+                            <input type="text" name="fee" class="form-control" />
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary " >Save</button>
                     </form>
                 </div>
             </div>

@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <p>Location</p>
-                            <select name="city_id">
+                            <select name="city_id" class="form-control">
                                 <option selected>Choose a city..</option>
                                 @foreach($city as $item)
                                     <option value="{{$item->city_id}}">{{$item->city_name}}</option>

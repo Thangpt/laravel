@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <p>Category Parent</p>
-                            <select name="category_parent">
+                            <select name="category_parent" class="form-control">
                                 <option selected>Choose Category parent..</option>
                                 <option value="0">Không</option>
                                 @foreach($category as $item)

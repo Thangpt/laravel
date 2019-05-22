@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <p> Level</p>
-                            <select name="level">
+                            <select name="level" class="form-control">
                                 <option>Choose..</option>
                                 <option value="0">User</option>
                                 <option value="2">Admin</option>

@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <p>Location</p>
-                            <select name="city_id">
+                            <select name="city_id" class="form-control">
                                 @foreach($city as $item)
                                     @if($repository->city_id==$item->city_id)
                                         <option selected value="{{$item->city_id}}">{{$item->city_name}}</option>

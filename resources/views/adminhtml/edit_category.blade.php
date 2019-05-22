@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <p>Category Parent</p>
-                            <select name="category_parent">
+                            <select name="category_parent" class="form-control">
                                 <option>Choose Category parent..</option>
                                 @if($item->category_parent==0)
                                     <option selected value="0">Không</option>
