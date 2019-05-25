@@ -29,15 +29,15 @@
                            data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Customer Address</th>
-                            <th scope="col">Customer Phone Number</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Shipping Fee</th>
-                            <th scope="col">Send</th>
-                            <th scope="col">Received</th>
-                            <th scope="col">More Details</th>
+                            <th scope="col" style="color:#30a5ff">ID</th>
+                            <th scope="col" style="color:#30a5ff">Customer Name</th>
+                            <th scope="col" style="color:#30a5ff">Customer Address</th>
+                            <th scope="col" style="color:#30a5ff">Customer Phone Number</th>
+                            <th scope="col" style="color:#30a5ff">Total Price</th>
+                            <th scope="col" style="color:#30a5ff">Shipping Fee</th>
+                            <th scope="col" style="color:#30a5ff">Send</th>
+                            <th scope="col" style="color:#30a5ff">Received</th>
+                            <th scope="col" style="color:#30a5ff">More Details</th>
 
 
                         </tr>
@@ -90,6 +90,6 @@
         {{--</thead>--}}
         {{----}}
         {{--</table>--}}
-        <button  type="button" class="btn btn-primary"><a style="color:black;text-decoration:none" href="product/add">Add Order</a></button>
+        <button  type="button" class="btn btn-primary"><a style="color:whitesmoke;text-decoration:none" href="product/add">Add Order</a></button>
     </div>
 @endsection

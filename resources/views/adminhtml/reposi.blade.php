@@ -22,11 +22,11 @@
                     <table class="table" style="text-align:center">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">City</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col" style="color:#30a5ff">ID</th>
+                            <th scope="col" style="color:#30a5ff">Name</th>
+                            <th scope="col" style="color:#30a5ff">City</th>
+                            <th scope="col" style="color:#30a5ff">Edit</th>
+                            <th scope="col" style="color:#30a5ff">Delete</th>
 
 
                         </tr>
@@ -37,7 +37,7 @@
                                 <th>{{$item->repository_id}}</th>
                                 <th>{{$item->repository_name}}</th>
                                 <th>{{$item->City->city_name}}</th>
-                                <th><a style="text-decoration:none;" href="repository/edit/{{$item->repository_id}}">Edit</a>
+                                <th><a style="text-decoration:none;color:#EE9C6C" href="repository/edit/{{$item->repository_id}}">Edit</a>
                                 </th>
                                 <th><a style="text-decoration:none;color:orangered"
                                        href="product/delete/{{$item->repository_id}}">Delete</a></th>
@@ -46,7 +46,7 @@
                         </tbody>
                     </table>
                     {{$repository->links()}}
-                    <button type="button" class="btn btn-primary"><a style="color:black;text-decoration:none"
+                    <button type="button" class="btn btn-primary"><a style="color:whitesmoke;text-decoration:none"
                                                                      href="repository/add">Add Repository</a></button>
                 </div>
             </div>

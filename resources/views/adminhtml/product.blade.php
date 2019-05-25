@@ -24,16 +24,16 @@
                            data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Group</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Size</th>
-                            <th scope="col">Color</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Edit Quantity In Repository</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col" style="color:#30a5ff">ID</th>
+                            <th scope="col" style="color:#30a5ff">Name</th>
+                            <th scope="col" style="color:#30a5ff">Group</th>
+                            <th scope="col" style="color:#30a5ff">Description</th>
+                            <th scope="col" style="color:#30a5ff">Size</th>
+                            <th scope="col" style="color:#30a5ff">Color</th>
+                            <th scope="col" style="color:#30a5ff">Price</th>
+                            <th scope="col" style="color:#30a5ff">Edit</th>
+                            <th scope="col" style="color:#30a5ff">Edit Quantity In Repository</th>
+                            <th scope="col" style="color:#30a5ff">Delete</th>
 
                         </tr>
                         </thead>
@@ -47,9 +47,9 @@
                                 <th>{{$item->size}}</th>
                                 <th>{{$item->color}}</th>
                                 <th>{{$item->price}}</th>
-                                <th><a style="text-decoration:none;" href="product/edit/{{$item->product_id}}">Edit</a></th>
+                                <th><a style="text-decoration:none;color:#EE9C6C" href="product/edit/{{$item->product_id}}">Edit</a></th>
                                 <th>
-                                        <a style="color:black;text-decoration:none" href="product/quantity/{{$item->product_id}}">Edit Quantity</a></th>
+                                        <a style="color:#80BEAF;text-decoration:none" href="product/quantity/{{$item->product_id}}">Edit Quantity</a></th>
                                 <th>
                                         <a style="color:orangered;text-decoration:none" href="product/delete/{{$item->product_id}}">Delete</a></th>
                             </tr>
@@ -82,6 +82,6 @@
         {{--</thead>--}}
         {{----}}
     {{--</table>--}}
-    <button  type="button" class="btn btn-primary"><a style="color:black;text-decoration:none" href="product/add">Add Product</a></button>
+    <button  type="button" class="btn btn-primary"><a style="color:whitesmoke;text-decoration:none" href="product/add">Add Product</a></button>
 </div>
 @endsection

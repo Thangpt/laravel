@@ -24,12 +24,12 @@
                            data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Group Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Product Category</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col" style="color:#30a5ff">ID</th>
+                            <th scope="col" style="color:#30a5ff">Group Name</th>
+                            <th scope="col" style="color:#30a5ff">Description</th>
+                            <th scope="col" style="color:#30a5ff">Product Category</th>
+                            <th scope="col" style="color:#30a5ff">Edit</th>
+                            <th scope="col" style="color:#30a5ff">Delete</th>
 
                         </tr>
                         </thead>
@@ -48,7 +48,7 @@
                                         @endforeach
 
                                 </th>
-                                <th><a style="text-decoration:none;" href="group/edit/{{$item->group_id}}">Edit</a></th>
+                                <th><a style="text-decoration:none;color:#EE9C6C" href="group/edit/{{$item->group_id}}">Edit</a></th>
                                 <th><a style="text-decoration:none;color:orangered" href="product/delete/{{$item->group_id}}">Delete</a></th>
                             </tr>
                         @endforeach
@@ -80,6 +80,6 @@
         {{--</thead>--}}
         {{----}}
         {{--</table>--}}
-        <button  type="button" class="btn btn-primary"><a style="color:black;text-decoration:none" href="group/add">Add Product Group</a></button>
+        <button  type="button" class="btn btn-primary"><a style="color:whitesmoke;text-decoration:none" href="group/add">Add Product Group</a></button>
     </div>
 @endsection

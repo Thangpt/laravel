@@ -25,11 +25,11 @@
                            data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category Parent</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col" style="color:#30a5ff" >ID</th>
+                            <th scope="col" style="color:#30a5ff">Name</th>
+                            <th scope="col" style="color:#30a5ff">Category Parent</th>
+                            <th scope="col" style="color:#30a5ff">Edit</th>
+                            <th scope="col" style="color:#30a5ff">Delete</th>
 
                         </tr>
                         </thead>
@@ -51,7 +51,7 @@
                                         @endforeach
                                     @endif
                                 </th>
-                                <th><a style="text-decoration:none;"
+                                <th><a style="text-decoration:none;color:#EE9C6C"
                                        href="category/edit/{{$item->category_id}}">Edit</a></th>
                                 <th><a style="text-decoration:none;color:orangered"
                                        href="category/delete/{{$item->category_id}}">Delete</a></th>
@@ -85,7 +85,7 @@
         {{--</thead>--}}
         {{----}}
         {{--</table>--}}
-        <button type="button" class="btn btn-primary"><a style="color:black;text-decoration:none" href="category/add">Add
+        <button type="button" class="btn btn-primary"><a style="color:whitesmoke;text-decoration:none" href="category/add">Add
                 Category</a></button>
     </div>
 @endsection

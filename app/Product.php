@@ -13,4 +13,9 @@ class Product extends Model
     public function Group(){
         return $this->belongsTo('App\Group','product_group','group_id');
     }
+    public function getColor(){
+        return $this->hasOne('App\Color','color','id');
+    }public function getSize(){
+        return $this->hasOne('App\Size','size','id');
+}
 }

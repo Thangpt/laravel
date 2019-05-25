@@ -24,12 +24,12 @@
                        data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">UserName</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
+                        <th scope="col" style="color:#30a5ff">ID</th>
+                        <th scope="col" style="color:#30a5ff">Name</th>
+                        <th scope="col" style="color:#30a5ff">UserName</th>
+                        <th scope="col" style="color:#30a5ff">Email</th>
+                        <th scope="col" style="color:#30a5ff">Edit</th>
+                        <th scope="col" style="color:#30a5ff">Delete</th>
 
 
                     </tr>
@@ -41,7 +41,7 @@
                         <th>{{$item->name}}</th>
                         <th>{{$item->username}}</th>
                         <th>{{$item->email}}</th>
-                        <th><a style="text-decoration:none;" href="user/edit/{{$item->id}}">Edit</a></th>
+                        <th><a style="text-decoration:none;color:#EE9C6C" href="user/edit/{{$item->id}}">Edit</a></th>
                         <th><a style="text-decoration:none;color:orangered" href="user/delete/{{$item->id}}">Delete</a></th>
 
                     </tr>
@@ -74,6 +74,6 @@
         {{--</thead>--}}
         {{----}}
         {{--</table>--}}
-    <button  type="button" class="btn btn-primary"><a style="color:black;text-decoration:none" href="user/add">Add User</a></button>
+    <button  type="button" class="btn btn-primary"><a style="color:white;text-decoration:none" href="user/add">Add User</a></button>
 </div>
 @endsection

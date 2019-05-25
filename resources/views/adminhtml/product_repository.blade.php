@@ -24,11 +24,11 @@
                     <table class="table" style="text-align:center">
                         <thead>
                         <tr>
-                            <th scope="col">Repository</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Product ID</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Edit Quantity</th>
+                            <th scope="col" style="color:#30a5ff">Repository</th>
+                            <th scope="col" style="color:#30a5ff">Product</th>
+                            <th scope="col" style="color:#30a5ff">Product ID</th>
+                            <th scope="col" style="color:#30a5ff">Quantity</th>
+                            <th scope="col" style="color:#30a5ff">Edit Quantity</th>
 
 
                         </tr>
@@ -40,7 +40,7 @@
                                 <th>{{$item->Product->product_name}}</th>
                                 <th>{{$item->product_id}}</th>
                                 <th>{{$item->quantity}}</th>
-                                <th><a style="text-decoration:none"
+                                <th><a style="text-decoration:none;color:#EE9C6C"
                                        href="product_repository/edit/{{$item->repository_id}}/{{$item->product_id}}">
                                         Edit</a></th>
 
