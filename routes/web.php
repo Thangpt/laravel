@@ -55,14 +55,15 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
 
     //Product
     Route::get('product/add', function () {
-        return view('adminhtml/add_product', ['group' => \App\Group::all()]);
+        return view('adminhtml/add_product', ['group' => \App\Group::all(),'colors'=>\App\Color::all(),'sizes'=>\App\Size::all()]);
     });
     Route::post('product/add', 'AdminController@addProduct');
     Route::get('product', function () {
         return view('adminhtml/product', ['product' => DB::table('product')->simplePaginate(5)]);
     })->name('product');
     Route::get('product/edit/{id}', function ($id) {
-        return view('adminhtml/edit_product', ['products' => \App\Product::where('product_id', $id)->get(), 'groups' => \App\Group::all()]);
+        return view('adminhtml/edit_product', ['products' => \App\Product::where('product_id', $id)->get(), 'groups' => \App\Group::all(),
+            'colors'=>\App\Color::all(),'sizes'=>\App\Size::all()]);
     });
     Route::post('product/edit', 'AdminController@editProduct');
     Route::get('product/delete/{id}', function ($id) {
@@ -161,7 +162,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
 
     //Users
     Route::get('user',function(){
-        return view('adminhtml/user',['users' => DB::table('users')->simplePaginate(5)]);
+        return view('adminhtml/user',['users' => \App\User::simplePaginate(5)]);
     })->name('user');
     Route::get('user/add',function(){
         return view('adminhtml/add_user');

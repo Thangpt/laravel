@@ -61,9 +61,9 @@
                             <h4>Product Size</h4>
                             <select name="product_size" class="form-control">
                                 <option selected> Choose a size</option>
-                                <option value="1">M</option>
-                                <option value="2">L</option>
-                                <option value="3">XL</option>
+                                @foreach($sizes as $size)
+                                    <option value="{{$size->id}}">{{$size->size}}</option>
+                                @endforeach
                             </select>
 
                         </div>
@@ -71,9 +71,9 @@
                             <h4>Color</h4>
                             <select name="product_color" class="form-control">
                                 <option selected> Choose a color</option>
-                                <option value="1">Red</option>
-                                <option value="2">Blue</option>
-                                <option value="3">Green</option>
+                                @foreach($colors as $color)
+                                    <option value="{{$color->id}}">{{$color->color}}</option>
+                                    @endforeach
                             </select>
 
                         </div>

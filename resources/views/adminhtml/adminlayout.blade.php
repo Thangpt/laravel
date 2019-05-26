@@ -166,7 +166,7 @@
             {{--<span class="icon-bar"></span>--}}
             {{--<span class="icon-bar"></span>--}}
             {{--</button>--}}
-            <a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
+            <a class="navbar-brand" href="{{route('dashboard')}}"><span>Manage</span>Admin</a>
             <ul class="user-menu">
                 <li class="dropdown pull-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -215,7 +215,8 @@
 </nav>
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-    <form role="search">
+    <form role="search" action="{{url('admin/search')}}" method="GET">
+        @csrf
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
         </div>

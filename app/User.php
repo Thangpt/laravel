@@ -29,7 +29,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     public function Order(){
-        return $this->hasMany('App\Order','user_id','id');
+        return $this->hasMany('App\Order','id','user_id');
     }
     public function AllCart(){
         return $this->hasMany('App\UserCart','id','user_id');

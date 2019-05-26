@@ -13,6 +13,19 @@ class ShippingFee extends Model
     protected $primaryKey = ['ship_from', 'ship_to'];
     public $incrementing = false;
 
+    public function Repository()
+    {
+        return $this->hasOne('App\Reposi', 'repository_id', 'ship_from');
+    }
+    public function City(){
+        return $this->hasOne('App\City','city_id','ship_to');
+    }
+
+    public function ProductRepository()
+    {
+        return $this->hasMany('App\ProductRepository', 'ship_from', 'repository_id');
+    }
+
     protected function setKeysForSaveQuery(Builder $query)
     {
         $keys = $this->getKeyName();
@@ -46,18 +59,5 @@ class ShippingFee extends Model
         return $this->getAttribute($keyName);
     }
 
-    public function Reposi()
-    {
-        return $this->hasOne('App\Reposi', 'ship_from', 'repository_id');
-    }
 
-    public function City()
-    {
-        return $this->hasOne('App\City', 'ship_to', 'city_id');
-    }
-
-    public function ProductRepository()
-    {
-        return $this->hasMany('App\ProductRepository', 'ship_from', 'repository_id');
-}
 }

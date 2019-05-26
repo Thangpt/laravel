@@ -45,38 +45,26 @@
                 <p>Product Size</p>
                 <select name="product_size" class="form-control">
 
-                    @if($product->size==1)
-                        <option selected value="1">M</option>
-                        <option value="2">L</option>
-                        <option value="3">XL</option>
-                    @elseif($product->size==2)
-                        <option value="1">M</option>
-                        <option selected value="2">L</option>
-                        <option value="3">XL</option>
-                    @else
-                        <option value="1">M</option>
-                        <option value="2">L</option>
-                        <option selected value="3">XL</option>
-                    @endif
+                    @foreach($sizes as $size)
+                        @if($size->id == $product->size)
+                            <option selected value="{{$product->size}}">{{$size->size}}</option>
+                            @else
+                            <option value="{{$size->id}}">{{$size->size}}</option>
+                            @endif
+                        @endforeach
                 </select>
 
             </div>
             <div class="form-group">
                 <p>Color</p>
                 <select name="product_color" class="form-control">
-                    @if($product->color==1)
-                        <option selected value="1">Red</option>
-                        <option value="2">Green</option>
-                        <option value="3">Blue</option>
-                    @elseif($product->color==2)
-                        <option value="1">Red</option>
-                        <option selected value="2">Green</option>
-                        <option value="3">Blue</option>
-                    @else
-                        <option value="1">Red</option>
-                        <option value="2">Green</option>
-                        <option selected value="3">Blue</option>
-                    @endif
+                    @foreach($colors as $color)
+                        @if($color->id == $product->color)
+                            <option selected value="{{$product->color}}">{{$color->color}}</option>
+                        @else
+                            <option value="{{$color->id}}">{{$color->color}}</option>
+                        @endif
+                    @endforeach
                 </select>
 
             </div>
