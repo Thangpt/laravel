@@ -152,21 +152,28 @@ class AdminController extends Controller
                 $model->product_image = $name;
             }
         } else $model->product_image = "";
-        $model->save();
+
 
         //add quantity to repository =0
-        $repository = Reposi::all();
-        foreach ($repository as $item) {
-            $product_repository = new ProductRepository();
-            $product_repository->repository_id = $item->repository_id;
-            $product_repository->product_id = $model->product_id;
-            $product_repository->quantity = 0;
-            $product_repository->save();
+        if(count(Product::where('product_group',$request->product_group)->where('size',$request->product_size)
+        ->where('color',$request->product_color)->get()) > 0){
+            return redirect('admin/product/add')->with('notice');
         }
+        else {
+            $model->save();
+            $repository = Reposi::all();
+            foreach ($repository as $item) {
+                $product_repository = new ProductRepository();
+                $product_repository->repository_id = $item->repository_id;
+                $product_repository->product_id = $model->product_id;
+                $product_repository->quantity = 0;
+                $product_repository->save();
+            }
 
 
-        return redirect('admin/product');
+            return redirect('admin/product');
 //    return view('adminhtml/add_product');
+        }
 
     }
 

@@ -45,6 +45,9 @@ Route::get('/admin',function(){
     return view('adminhtml/login');
 });
 Route::post('loginadmin','HomeController@checkAdmin');
+Route::get('product', function(){
+    return view('frontend/product');
+});
 
 
 Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
@@ -59,7 +62,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
     });
     Route::post('product/add', 'AdminController@addProduct');
     Route::get('product', function () {
-        return view('adminhtml/product', ['product' => DB::table('product')->simplePaginate(5)]);
+        return view('adminhtml/product', ['product' => \App\Product::simplePaginate(10)]);
     })->name('product');
     Route::get('product/edit/{id}', function ($id) {
         return view('adminhtml/edit_product', ['products' => \App\Product::where('product_id', $id)->get(), 'groups' => \App\Group::all(),
@@ -68,6 +71,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
     Route::post('product/edit', 'AdminController@editProduct');
     Route::get('product/delete/{id}', function ($id) {
         \App\Product::find($id)->delete();
+        foreach ( \App\ProductRepository::where('product_id',$id) as $item){
+            $item->delete();
+        }
         return redirect('admin/product');
     });
     Route::get('product/quantity/{id}', function ($id) {
@@ -124,7 +130,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
 
     //Category
     Route::get('category',function(){
-        return view('adminhtml/category',['category'=> \App\Category::simplePaginate(5),'model'=>\App\Category::all()]);
+        return view('adminhtml/category',['category'=> \App\Category::simplePaginate(10),'model'=>\App\Category::all()]);
     })->name('category');
     Route::get('category/add',function(){
         return view('adminhtml/add_category',['category'=>\App\Category::all()]);
@@ -137,11 +143,11 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
     Route::get('category/delete/{id}',function($id){
         $model=\App\Category::find($id);
         $model->delete();
-        return redirect('admin/product');
+        return redirect('admin/category');
     });
     //Group Product
     Route::get('group',function(){
-        return view('adminhtml/group',['groups' => DB::table('product_group')->simplePaginate(5),
+        return view('adminhtml/group',['groups' => \App\Group::simplePaginate(10),
             'category'=>\App\Category::all()
             ]);
 
@@ -157,7 +163,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'Checklevel'], function () {
     Route::get('group/delete/{id}',function($id){
         $model=\App\Group::find($id);
         $model->delete();
-        return redirect('admin/product');
+        return redirect('admin/group');
     });
 
     //Users

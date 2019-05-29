@@ -70,7 +70,7 @@
                            data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Name</th>
                             <th scope="col">Group Product</th>
                             <th scope="col">Descritpion</th>
@@ -86,15 +86,16 @@
                         </thead>
                         <tbody>
 
-                        @foreach($order->OrderItem as $item)
+                        @foreach($order->orderitem as $item)
                         <tr style="text-align:center">
-                            <th scope="row">{{$item->product_id}}</th>
-                            <th>{{$item->Product->product_name}}</th>
-                            <th>{{$item->Product->Group->group_name}}</th>
-                            <th>{{$item->Product->description}}</th>
-                            <th>{{$item->Product->size}}</th>
-                            <th>{{$item->Product->color}}</th>
-                            <th>{{$item->Product->price}}</th>
+                            <th scope="row"><img style="width:40px;border-radius: 30%"
+                                                 src="{{asset('upload/product/'.$item->Product->product_image)}}"/></th>
+                            <th>{{$item->product->product_name}}</th>
+                            <th>{{$item->product->group->group_name}}</th>
+                            <th>{{$item->product->description}}</th>
+                            <th>{{$item->product->size}}</th>
+                            <th>{{$item->product->color}}</th>
+                            <th>{{$item->product->price}}</th>
                             <th>{{$item->quantity}}</th>
 
                         </tr>

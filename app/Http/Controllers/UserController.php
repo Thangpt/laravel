@@ -257,7 +257,8 @@ class UserController extends Controller
         $order->total_price=$request->total_price;
         $order->shipping_fee=$request->total_fee;
         $order->phone_number=$request->phone_number;
-        $order->address=(City::find($request->city)->city_name)." ".$request->address;
+        $order->address= $request->address.", ".(City::find($request->city)->city_name);
+        $order->contact_name=$request->name;
         $order->save();
 
         foreach ($carts as $cart) {
@@ -329,7 +330,9 @@ class UserController extends Controller
 //            'order'=> Order::find($order->order_id)
 //
 //        ]);
-        if(count(Order_item::where('order_id',$order->order->id))==0){
+        $item= count(Order_item::where('order_id',$order->order_id)->get());
+        if( $item==0)
+        {
             $order->delete();
             return redirect('user/cart');
         }

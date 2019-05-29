@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Cart;
+use App\Product;
+use App\ProductRepository;
 use App\User;
 use App\UserCart;
 use Illuminate\Support\Facades\Auth;
@@ -40,10 +42,22 @@ class AppServiceProvider extends ServiceProvider
             }
             $data[$user->id]=$count;
         }
+        $products= Product::all();
+
+        $product=[];
+        foreach ($products as $item){
+            $quantity=ProductRepository::where('product_id',$item->product_id);
+            $count=0;
+            foreach ($quantity as $temp){
+                $count+=$temp->quantity;
+            }
+            $product[$item->product_id]=$count;
+        }
 
 
-
+        \View::share('products_quantity',$product);
         \View::share('total_cart',$data);
         \View::share('all_cart',UserCart::all());
+
     }
 }

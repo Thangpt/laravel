@@ -11,10 +11,10 @@ class ProductRepository extends Model
     public $timestamps = false;
     protected $primaryKey = ['repository_id','product_id'];
     public $incrementing = false;
-    public function Reposi(){
+    public function reposi(){
         return $this->hasOne('App\Reposi','repository_id','repository_id');
     }
-    public function Product(){
+    public function product(){
         return $this->hasOne('App\Product','product_id','product_id');
     }
     protected function setKeysForSaveQuery(Builder $query)

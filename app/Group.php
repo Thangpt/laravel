@@ -10,10 +10,10 @@ class Group extends Model
     protected $table="product_group";
     public $timestamps = false;
     protected $primaryKey = 'group_id';
-    public function Product(){
+    public function product(){
         return $this->hasMany('App\Product','group_id','product_group');
     }
-    public function Category(){
+    public function category(){
         return $this->belongsTo('App\Category','product_category','category_id');
     }
 }

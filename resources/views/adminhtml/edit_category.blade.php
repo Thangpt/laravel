@@ -53,7 +53,7 @@
                                         @if($item->category_parent==$model->category_id && $model->category_id != $item->category_id)
                                             <option selected
                                                     value="{{$model->category_id}}">{{$model->category_name}}</option>
-                                        @elseif($model->level==1)
+                                        @elseif($model->level < 3)
                                             <option value="{{$model->category_id}}">{{$model->category_name}}</option>
                                         @endif
                                     @endforeach

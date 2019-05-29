@@ -41,15 +41,18 @@
                                 <th>{{$item->description}}</th>
                                 {{--<th>{{$item->category()->get()->category_name }}</th>--}}
                                 <th>
-                                    @foreach($category as $model)
-                                        @if($item->product_category == $model->category_id)
-                                            {{$model->category_name}}
-                                            @endif
-                                        @endforeach
+                                    {{--@foreach($category as $model)--}}
+                                        {{--@if($item->product_category == $model->category_id)--}}
+                                            {{--{{$model->category_name}}--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                    {{$item->category->category_name}}
+
+
 
                                 </th>
                                 <th><a style="text-decoration:none;color:#EE9C6C" href="group/edit/{{$item->group_id}}">Edit</a></th>
-                                <th><a style="text-decoration:none;color:orangered" href="product/delete/{{$item->group_id}}">Delete</a></th>
+                                <th><a style="text-decoration:none;color:orangered" href="group/delete/{{$item->group_id}}">Delete</a></th>
                             </tr>
                         @endforeach
                         </tbody>

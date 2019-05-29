@@ -32,7 +32,7 @@
                                 <th scope="col">Customer Name</th>
                                 <th scope="col">Customer Address</th>
                                 <th scope="col">Customer Phone Number</th>
-                                <th scope="col">Total Price</th>
+                                <th scope="col">Total</th>
                                 <th scope="col">Shipping Fee</th>
                                 <th scope="col">More Details</th>
 

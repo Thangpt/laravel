@@ -30,7 +30,7 @@
                           action="{{ url('admin/product_repository/edit') }}">
                         {{ csrf_field() }}
                         @foreach($model as $item)
-                            <p class="form-control">Edit Product <b>{{$item->Product->product_name}}</b> Quantity in
+                            <p >Edit Product <b>{{$item->Product->product_name}}</b> Quantity in
                                 <b>{{$item->Reposi->repository_name}}</b></p>
                             <div class="form-group">
                                 <p>Quantity</p>

@@ -40,7 +40,7 @@
                                 <option selected>Choose Category parent..</option>
                                 <option value="0">Không</option>
                                 @foreach($category as $item)
-                                    @if($item->level==1)
+                                    @if($item->level < 3)
                                     <option value="{{$item->category_id}}">{{$item->category_name}}</option>
                                     @endif
                                 @endforeach

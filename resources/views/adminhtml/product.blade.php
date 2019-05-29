@@ -38,14 +38,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($product as$item)
+                        @foreach($product as $item)
                             <tr style="text-align:center">
                                 <th scope="row">{{$item->product_id}}</th>
                                 <th>{{$item->product_name}}</th>
-                                <th>{{$item->product_group}}</th>
+                                <th>{{$item->group->group_name}}</th>
                                 <th>{{$item->description}}</th>
-                                <th>{{$item->size}}</th>
-                                <th>{{$item->color}}</th>
+                                <th>{{$item->getSize->name}}</th>
+                                <th>{{$item->getColor->name}}</th>
                                 <th>{{$item->price}}</th>
                                 <th><a style="text-decoration:none;color:#EE9C6C" href="product/edit/{{$item->product_id}}">Edit</a></th>
                                 <th>

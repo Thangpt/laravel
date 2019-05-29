@@ -11,7 +11,7 @@ class Order_item extends Model
     public $timestamps = false;
     protected $primaryKey = 'id';
 
-    public function Product(){
+    public function product(){
         return $this->hasOne('App\Product','product_id','product_id');
     }
 

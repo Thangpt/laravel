@@ -12,10 +12,10 @@ class UserCart extends Model
     public $timestamps = false;
     protected $primaryKey = ['user_id','product_id'];
     public $incrementing = false;
-    public function User(){
+    public function user(){
         return $this->belongsTo('App\User','user_id','id');
     }
-    public function Product(){
+    public function product(){
         return $this->hasOne('App\Product','product_id','product_id');
     }
     protected function setKeysForSaveQuery(Builder $query)

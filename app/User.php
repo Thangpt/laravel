@@ -28,10 +28,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function Order(){
+    public function order(){
         return $this->hasMany('App\Order','id','user_id');
     }
-    public function AllCart(){
+    public function allCart(){
         return $this->hasMany('App\UserCart','id','user_id');
     }
 }

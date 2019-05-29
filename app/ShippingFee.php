@@ -13,15 +13,15 @@ class ShippingFee extends Model
     protected $primaryKey = ['ship_from', 'ship_to'];
     public $incrementing = false;
 
-    public function Repository()
+    public function repository()
     {
         return $this->hasOne('App\Reposi', 'repository_id', 'ship_from');
     }
-    public function City(){
+    public function city(){
         return $this->hasOne('App\City','city_id','ship_to');
     }
 
-    public function ProductRepository()
+    public function productRepository()
     {
         return $this->hasMany('App\ProductRepository', 'ship_from', 'repository_id');
     }
