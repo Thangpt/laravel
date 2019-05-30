@@ -45,7 +45,7 @@
                             <select name="product_category" class="form-control">
                                 <option selected>Choose..</option>
                                 @foreach($category as $item)
-                                    @if($item->level==2)
+                                    @if($item->level==3)
                                     <option value="{{$item->category_id}}">{{$item->category_name}}</option>
                                     @endif
                                 @endforeach

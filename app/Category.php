@@ -10,8 +10,9 @@ class Category extends Model
     protected $table="product_category";
     public $timestamps = false;
     protected $primaryKey = 'category_id';
+
     public function group(){
-        return $this->hasMany('App\Group','category_id','product_category');
+        return $this->hasMany('App\Group','product_category','category_id');
 
     }
 }

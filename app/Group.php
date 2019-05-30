@@ -11,7 +11,7 @@ class Group extends Model
     public $timestamps = false;
     protected $primaryKey = 'group_id';
     public function product(){
-        return $this->hasMany('App\Product','group_id','product_group');
+        return $this->hasMany('App\Product','product_group','group_id');
     }
     public function category(){
         return $this->belongsTo('App\Category','product_category','category_id');

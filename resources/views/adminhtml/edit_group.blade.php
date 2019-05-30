@@ -50,7 +50,7 @@
                                     @if($item->category_id==$group->product_category)
                                         <option selected
                                                 value="{{$item->category_id}}">{{$item->category_name}}</option>
-                                    @elseif($item->level ==2)
+                                    @elseif($item->level ==3)
                                         <option value="{{$item->category_id}}">{{$item->category_name}}</option>
                                     @endif
                                 @endforeach

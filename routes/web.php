@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('frontend/home');
+    return view('frontend/home',['new_product'=> \App\Group::all(),'man_product'=>\App\Category::where('category_parent','8')->get(),
+        'woman_product'=>\App\Category::where('category_parent',9)->get(),'all_product'=>\App\Product::all(), 'all_category'=>\App\Category::all()]);
+});
+Route::get('/product/{id}',function($id){
+    return view('frontend/product',['current_product'=>\App\Group::find($id),'all_product'=>\App\Product::all()]);
 });
 Route::get('master', function () {
     return view('master');

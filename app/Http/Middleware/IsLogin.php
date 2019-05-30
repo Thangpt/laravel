@@ -19,8 +19,6 @@ class IsLogin
     {
         if(Auth::check() && Auth::user()->level<1)
         {
-            \View::share('categories',\App\Category::where('level', 1)->get());
-            \View::share('sub_categories', \App\Category::where('level', 2)->get());
 
             return $next($request);
         }else{

@@ -60,11 +60,13 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Danh mục sản phẩm <span
                                         class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
+                                    @foreach($categories as $item)
+                                        <li><a href="#">{{$item->category_name}}</a></li>
+                                        @endforeach
+
                                 </ul>
                             </li>
+
                             <li><a href="#">Giới Thiệu </a></li>
                             <li><a href="#">Liên Hệ</a></li>
 
