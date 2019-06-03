@@ -32,7 +32,7 @@
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Customer Name</th>
+                            <th scope="col">Contact Name</th>
                             <th scope="col">Customer Address</th>
                             <th scope="col">Customer Phone Number</th>
                             <th scope="col">Total Price</th>
@@ -48,7 +48,7 @@
 
                             <tr style="text-align:center">
                                 <th scope="row">{{$order->order_id}}</th>
-                                <th>{{$order->orderUser->name}}</th>
+                                <th>{{$order->contact_name}}</th>
                                 <th>{{$order->address}}</th>
                                 <th>{{$order->phone_number}}</th>
                                 <th>{{$order->total_price}}</th>

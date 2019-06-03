@@ -18,6 +18,16 @@ Route::get('/', function () {
 Route::get('/product/{id}',function($id){
     return view('frontend/product',['current_product'=>\App\Group::find($id),'all_product'=>\App\Product::all()]);
 });
+Route::get('/category/{id}',function ($id){
+    return view('frontend/category',['category'=>\App\Category::all(),'groups'=>\App\Group::simplePaginate(9),
+        'current_category'=>\App\Category::find($id)]);
+});
+Route::post('/search', function(\Symfony\Component\HttpFoundation\Request $request){
+    return view('frontend/search',['all_products'=>\App\Group::simplePaginate(9),'key'=>$request]);
+});
+Route::get('/search',function (){
+    return redirect('/');
+});
 Route::get('master', function () {
     return view('master');
 });
@@ -262,4 +272,6 @@ Route::group(['prefix' => '/user', 'middleware' => 'Checklogin'], function () {
     Route::get('/cart',function(){
         return view('frontend/cart',['cart'=> \App\UserCart::where('user_id',\Illuminate\Support\Facades\Auth::user()->id)->get()]);
     });
+    Route::post('/add_cart','UserController@addCart');
+
 });

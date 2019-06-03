@@ -2,12 +2,35 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 clearpaddingl">
+                <div class="panel panel-info">
+                    <div class="panel-body" style="padding:0px">
+
+                        @foreach($categories as $category)
+                            <div class="list-group">
+                                <a href="{{url('/category/'.$category->category_id)}}"
+                                   class="list-group-item active">
+                                    {{$category->category_name}}
+                                </a>
+                                @foreach($sub_categories as $sub_category)
+                                    @if($sub_category->category_parent==$category->category_id)
+                                        <a href="{{url('/category/'.$sub_category->category_id)}}"
+                                           class="list-group-item">{{$sub_category->category_name}}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endforeach
+
+
+                    </div>
+                </div>
+            </div>
 
             <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 clearpaddingr">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearpadding">
 
                     <ol class="breadcrumb">
-                        <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Trang chủ</a>
+                        <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Trang chủ</a>
                         </li>
                         <li><a href="#">Sản phẩm</a></li>
                         <li class="active">{{$current_product->group_name}}</li>
@@ -70,7 +93,7 @@
                                             <h4 class="modal-title">Add to Cart</h4>
                                         </div>
                                         <div style="padding:15px;margin-left:20px;margin-right: 20px;">
-                                            <form method="POST" action="" class="form-horizontal" role="form">
+                                            <form method="POST" action="{{url('user/add_cart')}}" class="form-horizontal" role="form">
                                                 {{ csrf_field() }}
                                                 <div class="form-group">
                                                     <p>Choose a product</p>
@@ -85,7 +108,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p>Choose quantity</p>
-                                                    <input class="form-control" type="text"/>
+                                                    <input name="quantity" class="form-control" type="text"/>
                                                 </div>
                                                 <button class="btn btn-primary" type="submit"> Add</button>
                                                 <button style="float:right" type="button" class="btn btn-default"

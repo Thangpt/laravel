@@ -4,44 +4,6 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearpadding" style="margin-top: 15px;">
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 clearpaddingl">
-                    {{--<div class="panel panel-info" style="margin-bottom: 5px;">--}}
-                    {{--<div class="panel-heading">--}}
-                    {{--<h3 class="panel-title">Tìm kiếm</h3>--}}
-                    {{--</div>--}}
-                    {{--<div class="panel-body">--}}
-                    {{--<form class="form-horizontal text-center">--}}
-                    {{--<div class="form-group form-group-sm">--}}
-                    {{--<label class="col-sm-5 clearpaddingl control-label" for="formGroupInputSmall">Danh--}}
-                    {{--mục</label>--}}
-                    {{--<div class="col-sm-7" style="padding-left: 0px">--}}
-                    {{--<select class="form-control">--}}
-                    {{--<option>1</option>--}}
-                    {{--<option>2</option>--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group form-group-sm">--}}
-                    {{--<label class="col-sm-5 control-label" for="formGroupInputSmall">Giá từ:</label>--}}
-                    {{--<div class="col-sm-7" style="padding-left: 0px">--}}
-                    {{--<select class="form-control">--}}
-                    {{--<option>1</option>--}}
-                    {{--<option>2</option>--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group form-group-sm">--}}
-                    {{--<label class="col-sm-5 control-label" for="formGroupInputSmall">đến:</label>--}}
-                    {{--<div class="col-sm-7" style="padding-left: 0px">--}}
-                    {{--<select class="form-control">--}}
-                    {{--<option>1</option>--}}
-                    {{--<option>2</option>--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<button class="btn btn-info" type="submit" name='submit'>TÌm kiếm</button>--}}
-                    {{--</form>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
                     <div class="panel panel-info">
                         <div class="panel-body" style="padding:0px">
 

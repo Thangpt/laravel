@@ -117,42 +117,56 @@ class UserController extends Controller
 
         if (isset($request->update)) {
             foreach ($model as $item) {
-                $all_quantity=ProductRepository::where('product_id',$item->product_id)->get();
-                $count=0;
-                foreach ($all_quantity as $quantity){
-                    $count+=$quantity->quantity;
+                $all_quantity = ProductRepository::where('product_id', $item->product_id)->get();
+                $count = 0;
+                foreach ($all_quantity as $quantity) {
+                    $count += $quantity->quantity;
                 }
                 $item->quantity = $request->input('product' . $item->product_id);
                 if ($item->quantity == 0) {
                     $item->delete();
-                }elseif($item->quantity >$count ){
-                    $item->quantity=$count;
+                } elseif ($item->quantity > $count) {
+                    $item->quantity = $count;
                     $item->save();
-                }
-                else {
+                } else {
                     $item->save();
                 }
             }
             return redirect('/');
         } elseif (isset($request->buy)) {
-            foreach ($model as $item) {
-                $all_quantity=ProductRepository::where('product_id',$item->product_id)->get();
-                $count=0;
-                foreach ($all_quantity as $quantity){
-                    $count+=$quantity->quantity;
+            $data = [];
+            $users = User::all();
+            $carts = UserCart::all();
+            foreach ($users as $user) {
+                $count = 0;
+                foreach ($carts as $cart) {
+                    if ($user->id == $cart->user_id) {
+                        $count += $cart->quantity;
+                    }
                 }
-                $item->quantity = $request->input('product' . $item->product_id);
-                if ($item->quantity == 0) {
-                    $item->delete();
-                }elseif($item->quantity >$count ){
-                    $item->quantity=$count;
-                    $item->save();
-                }
-                else {
-                    $item->save();
-                }
+                $data[$user->id] = $count;
             }
-            return redirect('user/delivery_info');
+            if ($data[Auth::id()] == 0) {
+                return redirect('/');
+            } else {
+                foreach ($model as $item) {
+                    $all_quantity = ProductRepository::where('product_id', $item->product_id)->get();
+                    $count = 0;
+                    foreach ($all_quantity as $quantity) {
+                        $count += $quantity->quantity;
+                    }
+                    $item->quantity = $request->input('product' . $item->product_id);
+                    if ($item->quantity == 0) {
+                        $item->delete();
+                    } elseif ($item->quantity > $count) {
+                        $item->quantity = $count;
+                        $item->save();
+                    } else {
+                        $item->save();
+                    }
+                }
+                return redirect('user/delivery_info');
+            }
         }
 
 
@@ -188,20 +202,17 @@ class UserController extends Controller
                 //sp mua
 
 
-                $repository = ProductRepository::where('product_id',$cart->product_id)->where('repository_id',$fee->ship_from)->get();
+                $repository = ProductRepository::where('product_id', $cart->product_id)->where('repository_id', $fee->ship_from)->get();
                 $quantity = 0;
                 foreach ($repository as $item) {
                     $quantity += $item->quantity;
                 }
 
 
-
-
-                if ($quantity >= $cart->quantity && $count!=0) {
-                    $count=0;
+                if ($quantity >= $cart->quantity && $count != 0) {
+                    $count = 0;
                     $sum++;
-                }
-                elseif ($quantity < $cart->quantity && $quantity != 0) {
+                } elseif ($quantity < $cart->quantity && $quantity != 0) {
                     if ($count <= $quantity && $count != 0) {
                         $count = 0;
                         $sum++;
@@ -238,35 +249,37 @@ class UserController extends Controller
 
 
     }
-    public function OrderCreate(Request $request){
+
+    public function OrderCreate(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required',
             'phone_number' => 'required|integer|min:1',
             'address' => 'required',
             'city' => 'required',
-            'total_price'=>'required',
-            'total_fee'=>'required'
+            'total_price' => 'required',
+            'total_fee' => 'required'
 
 
         ]);
         $fees = ShippingFee::where('ship_to', $request->city)->orderBy('fee', 'ASC')->get();
         $carts = UserCart::where('user_id', Auth::user()->id)->get();
         $data = [];
-        $order= new Order();
-        $order->user_id= Auth::user()->id;
-        $order->total_price=$request->total_price;
-        $order->shipping_fee=$request->total_fee;
-        $order->phone_number=$request->phone_number;
-        $order->address= $request->address.", ".(City::find($request->city)->city_name);
-        $order->contact_name=$request->name;
+        $order = new Order();
+        $order->user_id = Auth::user()->id;
+        $order->total_price = $request->total_price;
+        $order->shipping_fee = $request->total_fee;
+        $order->phone_number = $request->phone_number;
+        $order->address = $request->address . ", " . (City::find($request->city)->city_name);
+        $order->contact_name = $request->name;
         $order->save();
 
         foreach ($carts as $cart) {
             $count = $cart->quantity;
-            $order_item= new Order_item();
-            $order_item->order_id=$order->order_id;
-            $order_item->product_id=$cart->product_id;
-            $order_item->quantity=$cart->quantity;
+            $order_item = new Order_item();
+            $order_item->order_id = $order->order_id;
+            $order_item->product_id = $cart->product_id;
+            $order_item->quantity = $cart->quantity;
             $order_item->save();
 
 
@@ -274,41 +287,37 @@ class UserController extends Controller
                 //sp mua
 
 
-                $repository = ProductRepository::where('product_id',$cart->product_id)->where('repository_id',$fee->ship_from)->get();
+                $repository = ProductRepository::where('product_id', $cart->product_id)->where('repository_id', $fee->ship_from)->get();
                 $quantity = 0;
                 foreach ($repository as $item) {
                     $quantity += $item->quantity;
                 }
 
 
+                if ($quantity >= $cart->quantity && $count != 0) {
 
-
-                if ($quantity >= $cart->quantity && $count!=0) {
-
-                    foreach ($repository as $reposi){
-                        $reposi->quantity-=$cart->quantity;
+                    foreach ($repository as $reposi) {
+                        $reposi->quantity -= $cart->quantity;
                         $reposi->save();
                         $cart->delete();
                     }
-                    $count=0;
+                    $count = 0;
 
-                }
-                elseif ($quantity < $cart->quantity && $quantity != 0) {
+                } elseif ($quantity < $cart->quantity && $quantity != 0) {
                     if ($count <= $quantity && $count != 0) {
 
-                        foreach ($repository as $reposi){
-                            $reposi->quantity-=$count;
+                        foreach ($repository as $reposi) {
+                            $reposi->quantity -= $count;
                             $reposi->save();
-                            $count=0;
+                            $count = 0;
                             $cart->delete();
                         }
 
 
-
                     } elseif ($count > $quantity) {
                         $count -= $quantity;
-                        foreach ($repository as $reposi){
-                            $reposi->quantity=0;
+                        foreach ($repository as $reposi) {
+                            $reposi->quantity = 0;
                             $reposi->save();
 
                         }
@@ -330,15 +339,51 @@ class UserController extends Controller
 //            'order'=> Order::find($order->order_id)
 //
 //        ]);
-        $item= count(Order_item::where('order_id',$order->order_id)->get());
-        if( $item==0)
-        {
+        $item = count(Order_item::where('order_id', $order->order_id)->get());
+        if ($item == 0) {
             $order->delete();
             return redirect('user/cart');
-        }
-        else {
+        } else {
             return redirect('user/order/detail/' . $order->order_id);
         }
+
+    }
+    public function addCart(Request $request){
+        $this->validate($request,['quantity'=>'required|integer|min:1']);
+//        $product= Product::find($request->product);
+        $count=0;
+        foreach (ProductRepository::where('product_id',$request->product)->get() as $item){
+            $count+=$item->quantity;
+        }
+        $carts = UserCart::where('user_id',Auth::user()->id)->where('product_id',$request->product)->get();
+        if(count($carts)>0){
+            foreach ($carts as $item){
+                if(($item->quantity + $request->quantity) > $count ){
+                    $item->quantity= $count;
+                    $item->save();
+                }
+                else{
+                    $item->quantity+=$request->quantity;
+                    $item->save();
+                }
+            }
+        }
+        else{
+            $new_cart= new UserCart();
+            $new_cart->product_id=$request->product;
+            $new_cart->user_id= Auth::id();
+            if($request->quantity > $count){
+                $new_cart->quantity = $count;
+                $new_cart->save();
+            }
+            else {
+                $new_cart->quantity= $request->quantity;
+                $new_cart->save();
+            }
+
+        }
+        return redirect('user/cart');
+
 
     }
 
