@@ -4,57 +4,30 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearpadding" style="margin-top: 15px;">
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 clearpaddingl">
-                    {{--<div class="panel panel-info" style="margin-bottom: 5px;">--}}
-                    {{--<div class="panel-heading">--}}
-                    {{--<h3 class="panel-title">Tìm kiếm</h3>--}}
-                    {{--</div>--}}
-                    {{--<div class="panel-body">--}}
-                    {{--<form class="form-horizontal text-center">--}}
-                    {{--<div class="form-group form-group-sm">--}}
-                    {{--<label class="col-sm-5 clearpaddingl control-label" for="formGroupInputSmall">Danh--}}
-                    {{--mục</label>--}}
-                    {{--<div class="col-sm-7" style="padding-left: 0px">--}}
-                    {{--<select class="form-control">--}}
-                    {{--<option>1</option>--}}
-                    {{--<option>2</option>--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group form-group-sm">--}}
-                    {{--<label class="col-sm-5 control-label" for="formGroupInputSmall">Giá từ:</label>--}}
-                    {{--<div class="col-sm-7" style="padding-left: 0px">--}}
-                    {{--<select class="form-control">--}}
-                    {{--<option>1</option>--}}
-                    {{--<option>2</option>--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group form-group-sm">--}}
-                    {{--<label class="col-sm-5 control-label" for="formGroupInputSmall">đến:</label>--}}
-                    {{--<div class="col-sm-7" style="padding-left: 0px">--}}
-                    {{--<select class="form-control">--}}
-                    {{--<option>1</option>--}}
-                    {{--<option>2</option>--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<button class="btn btn-info" type="submit" name='submit'>TÌm kiếm</button>--}}
-                    {{--</form>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
                     <div class="panel panel-info">
                         <div class="panel-body" style="padding:0px">
 
                             @foreach($categories as $category)
                                 <div class="list-group">
-                                    <a href="{{url('/category/'.$category->category_id)}}"
-                                       class="list-group-item active">
-                                        {{$category->category_name}}
-                                    </a>
+                                    <div class="list-group-item active"><a class="list-group-item active"
+                                                                           href="{{url('/category/'.$category->category_id)}}">
+                                            {{$category->category_name}}
+                                        </a></div>
                                     @foreach($sub_categories as $sub_category)
                                         @if($sub_category->category_parent==$category->category_id)
-                                            <a href="{{url('/category/'.$sub_category->category_id)}}"
-                                               class="list-group-item">{{$sub_category->category_name}}</a>
+                                            <div class="list-group-item dropdown">
+                                                <button class="list-group-item" type="button" id="dropdownMenuButton"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a style="text-decoration:none;"
+                                                        href="{{url('/category/'.$sub_category->category_id)}}">{{$sub_category->category_name}}</a>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    @foreach($third_categories as $third_category)
+                                                        @if($third_category->category_parent == $sub_category->category_id)
+                                                            <a class="dropdown-item list-group-item" style="display: block" href="{{url('category/'.$third_category->category_id)}}">{{$third_category->category_name}}</a>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
                                         @endif
                                     @endforeach
                                 </div>

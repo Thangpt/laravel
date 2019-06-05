@@ -165,15 +165,9 @@ class UserController extends Controller
                         $item->save();
                     }
                 }
-                $recount = 0;
-                foreach (UserCart::where('user_id', Auth::id())->get() as $item) {
-                    $recount += $item->quantity;
-                }
-                if ($recount == 0) {
-                    return redirect('/user/cart');
-                } else {
+
                     return redirect('user/delivery_info');
-                }
+
             }
         }
 

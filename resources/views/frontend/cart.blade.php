@@ -9,14 +9,25 @@
 
                             @foreach($categories as $category)
                                 <div class="list-group">
-                                    <a href="{{url('/category/'.$category->category_id)}}"
-                                       class="list-group-item active">
-                                        {{$category->category_name}}
-                                    </a>
+                                    <div class="list-group-item active"><a class="list-group-item active"
+                                                                           href="{{url('/category/'.$category->category_id)}}">
+                                            {{$category->category_name}}
+                                        </a></div>
                                     @foreach($sub_categories as $sub_category)
                                         @if($sub_category->category_parent==$category->category_id)
-                                            <a href="{{url('/category/'.$sub_category->category_id)}}"
-                                               class="list-group-item">{{$sub_category->category_name}}</a>
+                                            <div class="list-group-item dropdown">
+                                                <button class="list-group-item" type="button" id="dropdownMenuButton"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a style="text-decoration:none;"
+                                                        href="{{url('/category/'.$sub_category->category_id)}}">{{$sub_category->category_name}}</a>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    @foreach($third_categories as $third_category)
+                                                        @if($third_category->category_parent == $sub_category->category_id)
+                                                            <a class="dropdown-item list-group-item" style="display: block" href="{{url('category/'.$third_category->category_id)}}">{{$third_category->category_name}}</a>
+                                                            @endif
+                                                        @endforeach
+                                                </div>
+                                            </div>
                                         @endif
                                     @endforeach
                                 </div>

@@ -60,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
         \View::share('all_cart',UserCart::all());
         \View::share('categories',\App\Category::where('level', 1)->get());
         \View::share('sub_categories', \App\Category::where('level', 2)->get());
+        \View::share('third_categories', \App\Category::where('level', 3)->get());
+
 
     }
 }

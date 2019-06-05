@@ -237,7 +237,7 @@
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <a href="" title="" style="color:gray"><strong>HỆ THỐNG CỬA HÀNG</strong></a>
                             <li><a href="#" title="" style="color:gray">Kiểm tra hàng chính hãng</a></li>
-                            <li><a href="#" title="" style="color:gray">Máy đổi trả</a></li>
+                            <li><a href="#" title="" style="color:gray">Số máy đổi trả</a></li>
                             <li><a href="#" title="" style="color:gray">Hệ thống cửa hàng</a></li>
                         </div>
                     </div>
