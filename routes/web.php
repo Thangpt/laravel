@@ -254,9 +254,18 @@ Route::group(['prefix' => '/user', 'middleware' => 'Checklogin'], function () {
     Route::get('/profile', 'TestController@profile');
     Route::get('/home', 'TestController@profile');
     Route::post('/update_cart','UserController@UpdateCart')->name('update_cart');
+    Route::get('/update_cart',function (){
+        return redirect('user/cart');
+    });
     Route::get('/delivery_info','UserController@DeliveryInfo');
     Route::post('/order_info','UserController@OrderInfo');
+    Route::get('/order_infor',function (){
+        return redirect('user/cart');
+    });
     Route::post('/order_create','UserController@OrderCreate');
+    Route::get('/order_create',function (){
+        return redirect('user/cart');
+    });
     Route::get('/order',function(){
         return view('frontend/order',['order'=>\App\Order::where('user_id',\Illuminate\Support\Facades\Auth::user()->id)->simplePaginate(10)]);
     });
