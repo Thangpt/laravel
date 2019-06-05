@@ -165,7 +165,15 @@ class UserController extends Controller
                         $item->save();
                     }
                 }
-                return redirect('user/delivery_info');
+                $recount = 0;
+                foreach (UserCart::where('user_id', Auth::id())->get() as $item) {
+                    $recount += $item->quantity;
+                }
+                if ($recount == 0) {
+                    return redirect('/user/cart');
+                } else {
+                    return redirect('user/delivery_info');
+                }
             }
         }
 
@@ -173,9 +181,17 @@ class UserController extends Controller
     }
 
     public function DeliveryInfo()
-    {
-        return view('frontend/delivery_info', [
-            'city' => City::all()]);
+    {   $recount = 0;
+        foreach (UserCart::where('user_id', Auth::id())->get() as $item) {
+            $recount += $item->quantity;
+        }
+        if ($recount == 0) {
+            return redirect('/user/cart');
+        } else {
+            return view('frontend/delivery_info', [
+                'city' => City::all()]);
+        }
+
     }
 
     public function OrderInfo(Request $request)
@@ -348,36 +364,35 @@ class UserController extends Controller
         }
 
     }
-    public function addCart(Request $request){
-        $this->validate($request,['quantity'=>'required|integer|min:1']);
+
+    public function addCart(Request $request)
+    {
+        $this->validate($request, ['quantity' => 'required|integer|min:1']);
 //        $product= Product::find($request->product);
-        $count=0;
-        foreach (ProductRepository::where('product_id',$request->product)->get() as $item){
-            $count+=$item->quantity;
+        $count = 0;
+        foreach (ProductRepository::where('product_id', $request->product)->get() as $item) {
+            $count += $item->quantity;
         }
-        $carts = UserCart::where('user_id',Auth::user()->id)->where('product_id',$request->product)->get();
-        if(count($carts)>0){
-            foreach ($carts as $item){
-                if(($item->quantity + $request->quantity) > $count ){
-                    $item->quantity= $count;
+        $carts = UserCart::where('user_id', Auth::user()->id)->where('product_id', $request->product)->get();
+        if (count($carts) > 0) {
+            foreach ($carts as $item) {
+                if (($item->quantity + $request->quantity) > $count) {
+                    $item->quantity = $count;
                     $item->save();
-                }
-                else{
-                    $item->quantity+=$request->quantity;
+                } else {
+                    $item->quantity += $request->quantity;
                     $item->save();
                 }
             }
-        }
-        else{
-            $new_cart= new UserCart();
-            $new_cart->product_id=$request->product;
-            $new_cart->user_id= Auth::id();
-            if($request->quantity > $count){
+        } else {
+            $new_cart = new UserCart();
+            $new_cart->product_id = $request->product;
+            $new_cart->user_id = Auth::id();
+            if ($request->quantity > $count) {
                 $new_cart->quantity = $count;
                 $new_cart->save();
-            }
-            else {
-                $new_cart->quantity= $request->quantity;
+            } else {
+                $new_cart->quantity = $request->quantity;
                 $new_cart->save();
             }
 

@@ -61,7 +61,7 @@
                                         class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     @foreach($categories as $item)
-                                        <li><a href="#">{{$item->category_name}}</a></li>
+                                        <li><a href="{{url('/category/'.$item->category_id)}}">{{$item->category_name}}</a></li>
                                         @endforeach
 
                                 </ul>
